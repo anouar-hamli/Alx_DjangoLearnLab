@@ -9,7 +9,7 @@ from django.shortcuts import render
 
 def list_books(request):
     books = Book.objects.all()
-    return render(request, 'list_books.html', {'books': books})
+    return render(request, 'relationship_app/list_books.html', {'books': books})
 
 class LibraryDetailView(DetailView):
     model = Library
@@ -25,7 +25,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('list_books')  # أو أي صفحة تريد إعادة التوجيه إليها بعد تسجيل الدخول
+            return redirect('relationship_app/list_books.html')  # أو أي صفحة تريد إعادة التوجيه إليها بعد تسجيل الدخول
     else:
         form = AuthenticationForm()
     return render(request, 'relationship_app/login.html', {'form': form})
